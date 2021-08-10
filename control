@@ -1,0 +1,9 @@
+Package: com.xyaman.cucu
+Name: Cucu
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Customize your notifications banners
+Maintainer: Xyaman
+Author: Xyaman
+Section: Tweaks
+Depends: mobilesubstrate, com.xyaman.libkuro, com.mrgcgamer.libgcuniversal

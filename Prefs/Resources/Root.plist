@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>items</key>
+        <array>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>footerText</key>
+                <string>Respring required</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSwitchCell</string>
+                <key>default</key>
+                <false/>
+                <key>label</key>
+                <string>Enabled</string>
+                <key>key</key>
+                <string>isEnabled</string>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>id</key>
+                <string>EnableButton</string>
+            </dict>
+
+            <!-- Dismiss delay -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Dismiss notification banner after</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBStepperTableCell</string>
+                <key>default</key>
+                <real>6</real>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>key</key>
+                <string>dismissDelay</string>
+                <key>label</key>
+                <string>%i Seconds</string>
+                <key>max</key>
+                <real>15</real>
+                <key>min</key>
+                <real>1</real>
+                <key>singularLabel</key>
+                <string>1 Second</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+
+            <!-- Dismiss style -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Dismiss visualization style</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSegmentCell</string>
+                <key>validValues</key>
+                <array>
+                    <integer>0</integer>
+                    <integer>1</integer>
+                    <integer>2</integer>
+                </array>
+                <key>validTitles</key>
+                <array>
+                    <string>None</string>
+                    <string>Timer</string>
+                    <string>Fill</string>
+                </array>
+                <key>default</key>
+                <integer>0</integer>
+                <key>key</key>
+                <string>dismissStyle</string>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>Customize Timer</string>
+                <key>detail</key>
+                <string>CCUSubListController</string>
+                <key>VDESub</key>
+                <string>CustomizeTimer</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>label</key>
+                <string>Customize Fill</string>
+                <key>detail</key>
+                <string>CCUSubListController</string>
+                <key>VDESub</key>
+                <string>CustomizeFill</string>
+            </dict>
+
+            <!-- Other -->
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Other</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBTwitterCell</string>
+                <key>label</key>
+                <string>Xyaman</string>
+                <key>user</key>
+                <string>xyamanDEV</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBLinkTableCell</string>
+                <key>label</key>
+                <string>Donate me ☕️</string>
+                <key>url</key>
+                <string>https://paypal.me/xyamandev</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBLinkTableCell</string>
+                <key>label</key>
+                <string>Source Code ⚙️</string>
+                <key>url</key>
+                <string>https://github.com/xyaman/cucu</string>
+            </dict>
+        </array>
+        <key>title</key>
+        <string>Cucu</string>
+    </dict>
+</plist>

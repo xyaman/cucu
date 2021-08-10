@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>items</key>
+        <array>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Coloring style</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSSegmentCell</string>
+                <key>validValues</key>
+                <array>
+                    <integer>1</integer>
+                    <integer>2</integer>
+                </array>
+                <key>validTitles</key>
+                <array>
+                    <string>Adaptative</string>
+                    <string>Custom</string>
+                </array>
+                <key>default</key>
+                <integer>1</integer>
+                <key>key</key>
+                <string>timerColorStyle</string>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSLinkCell</string>
+                <key>cellClass</key>
+                <string>GcColorPickerCell</string>
+                <key>label</key>
+                <string>Custom color</string>
+                <key>fallback</key>
+                <string>000000</string>
+                <key>key</key>
+                <string>timerCustomColor</string>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
+                <key>label</key>
+                <string>Sizing</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBStepperTableCell</string>
+                <key>default</key>
+                <real>20</real>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>key</key>
+                <string>timerSize</string>
+                <key>label</key>
+                <string>Timer Size: %i px</string>
+                <key>max</key>
+                <real>60</real>
+                <key>min</key>
+                <real>1</real>
+                <key>singularLabel</key>
+                <string>Timer Size: %i px</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBStepperTableCell</string>
+                <key>default</key>
+                <real>8</real>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>key</key>
+                <string>timerFontSize</string>
+                <key>label</key>
+                <string>Font Size: %i px</string>
+                <key>max</key>
+                <real>20</real>
+                <key>min</key>
+                <real>1</real>
+                <key>singularLabel</key>
+                <string>Font Size: %i px</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+            <dict>
+                <key>cellClass</key>
+                <string>HBStepperTableCell</string>
+                <key>default</key>
+                <real>3</real>
+                <key>defaults</key>
+                <string>com.xyaman.cucupreferences</string>
+                <key>key</key>
+                <string>timerLineWidth</string>
+                <key>label</key>
+                <string>Line Width: %i px</string>
+                <key>max</key>
+                <real>20</real>
+                <key>min</key>
+                <real>1</real>
+                <key>singularLabel</key>
+                <string>Line Width: %i px</string>
+                <key>PostNotification</key>
+                <string>com.xyaman.cucupreferences/ReloadPrefs</string>
+            </dict>
+        </array>
+        <key>title</key>
+        <string>Customize Timer</string>
+    </dict>
+</plist>
