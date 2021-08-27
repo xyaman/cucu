@@ -7,6 +7,22 @@
             <dict>
                 <key>cell</key>
                 <string>PSGroupCell</string>
+                <key>headerCellClass</key>
+                <string>HBPackageNameHeaderCell</string>
+                <key>condensed</key>
+                <true/>
+                <key>icon</key>
+                <string>icon.png</string>
+                <key>packageIdentifier</key>
+                <string>com.xyaman.cucu</string>
+                <key>footerText</key>
+                <string>Customize your notifications banners</string>
+                <key>footerAlignment</key>
+                <integer>1</integer>
+            </dict>
+            <dict>
+                <key>cell</key>
+                <string>PSGroupCell</string>
                 <key>footerText</key>
                 <string>Respring required</string>
             </dict>

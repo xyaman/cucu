@@ -6,4 +6,7 @@ Description: Customize your notifications banners
 Maintainer: Xyaman
 Author: Xyaman
 Section: Tweaks
-Depends: mobilesubstrate, com.xyaman.libkuro, com.mrgcgamer.libgcuniversal
+Depends: mobilesubstrate, preferenceloader, com.xyaman.libkuro, com.mrgcgamer.libgcuniversal, ws.hbang.common (>= 1.17)
+Depiction: https://repo.xyaman.xyz/depictions/index.html?p=cucu
+SileoDepiction: https://repo.xyaman.xyz/depictions/cucu/depiction.json
+Icon: https://repo.xyaman.xyz/depictions/cucu/assets/icon.png
