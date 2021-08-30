@@ -49,9 +49,9 @@ static dispatch_queue_t getBBServerQueue() {
 
 static void fakeBanner() {
     
-	BBBulletin* bulletin = [[%c(BBBulletin) alloc] init];
+    BBBulletin* bulletin = [[%c(BBBulletin) alloc] init];
 
-	bulletin.title = @"Cucu";
+    bulletin.title = @"Cucu";
     bulletin.message = @"This is a test banner";
     bulletin.sectionID = @"com.apple.MobileSMS";
     bulletin.bulletinID = [[NSProcessInfo processInfo] globallyUniqueString];
@@ -94,6 +94,8 @@ static void fakeBanner() {
 
     if(self.frame.origin.y > 0 && !self.shapeLayer) {
         self.countLabel.bounds = self.bounds;
+
+        // Shape layer
         self.shapeLayer = [CAShapeLayer layer];
         self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
         self.shapeLayer.strokeColor = self.strokeColor.CGColor;
@@ -139,17 +141,6 @@ static void fakeBanner() {
 %hook NCNotificationShortLookView
 %property(nonatomic, retain) UILabel *cucuCountLabel;
 %property(nonatomic) int cucuCount;
-%property(nonatomic) BOOL isBanner;
-
-- (id) init {
-    id orig = %orig;
-
-    if (!ANCESTOR_RESPONDS_TO(delegate)) return orig;
-    if (![[[self _viewControllerForAncestor] delegate] isKindOfClass:%c(SBNotificationBannerDestination)]) return orig; // check if the notification is a banner
-    self.isBanner = YES;
-
-    return orig;
-}
 
 - (void) didMoveToWindow {
     %orig;
@@ -214,16 +205,15 @@ static void fakeBanner() {
     else if([prefTimerColorStyle intValue] == 2) timer.strokeColor = [GcColorPickerUtils colorWithHex:prefTimerCustomColor];
 
     // Font coloring
-    if(!sibling.backgroundColor) timer.countLabel.textColor = [UIColor labelColor];
-    else if([Kuro isDarkColor:sibling.backgroundColor]) timer.countLabel.textColor = [UIColor whiteColor];
-    else timer.countLabel.textColor = [UIColor blackColor];
+    if([prefTimerTextColorStyle intValue] == 1) timer.countLabel.textColor = [Kuro getPrimaryColor:self.icons[0]];
+    else if([prefTimerTextColorStyle intValue] == 2) timer.countLabel.textColor = [GcColorPickerUtils colorWithHex:prefTimerTextCustomColor];
 
     // Add to superview
     [superview addSubview:timer];
 
     timer.translatesAutoresizingMaskIntoConstraints = NO;
-    [timer.centerYAnchor constraintEqualToAnchor:sibling.centerYAnchor constant:[prefTimerSize floatValue]/2].active = YES; 
-    [timer.rightAnchor constraintEqualToAnchor:sibling.rightAnchor constant:-5].active = YES;
+    [timer.centerYAnchor constraintEqualToAnchor:sibling.centerYAnchor constant:[prefTimerSize floatValue]/2 + [prefTimerYOffset floatValue]].active = YES; 
+    [timer.rightAnchor constraintEqualToAnchor:sibling.rightAnchor constant:-5 + [prefTimerXOffset floatValue]].active = YES;
     [timer.widthAnchor constraintEqualToConstant:[prefTimerSize floatValue]].active = YES;
     [timer.heightAnchor constraintEqualToConstant:[prefTimerSize floatValue]].active = YES;
 
@@ -244,7 +234,7 @@ static void fakeBanner() {
 
     // Animation
     fill.translatesAutoresizingMaskIntoConstraints = NO;
-    [fill.topAnchor constraintEqualToAnchor:superview.topAnchor].active = YES; // Only when using horizontal
+    [fill.topAnchor constraintEqualToAnchor:superview.topAnchor].active = YES;
     [fill.bottomAnchor constraintEqualToAnchor:superview.bottomAnchor].active = YES;
     [fill.leftAnchor constraintEqualToAnchor:superview.leftAnchor].active = YES;
     // [superview layoutIfNeeded];
@@ -253,7 +243,7 @@ static void fakeBanner() {
         delay:0 
         options:UIViewAnimationOptionCurveLinear
         animations:^{
-            [fill.widthAnchor constraintEqualToConstant:359].active = YES; // Horizontal
+            [fill.widthAnchor constraintEqualToConstant:359].active = YES;
             [superview layoutIfNeeded];
         } 
         completion:nil
@@ -294,9 +284,13 @@ static void fakeBanner() {
     // Timer preferences
     [preferences registerObject:&prefTimerColorStyle default:@(1) forKey:@"timerColorStyle"];
     [preferences registerObject:&prefTimerCustomColor default:@"000000" forKey:@"timerCustomColor"];
+    [preferences registerObject:&prefTimerTextColorStyle default:@(1) forKey:@"timerTextColorStyle"];
+    [preferences registerObject:&prefTimerTextCustomColor default:@"000000" forKey:@"timerTextCustomColor"];
     [preferences registerObject:&prefTimerSize default:@(20) forKey:@"timerSize"];
     [preferences registerObject:&prefTimerFontSize default:@(8) forKey:@"timerFontSize"];
     [preferences registerObject:&prefTimerLineWidth default:@(3) forKey:@"timerLineWidth"];
+    [preferences registerObject:&prefTimerYOffset default:@(0) forKey:@"timerYOffset"];
+    [preferences registerObject:&prefTimerXOffset default:@(0) forKey:@"timerXOffset"];
 
     %init(Cucu);
 }

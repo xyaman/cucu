@@ -22,9 +22,14 @@ NSString *prefFillCustomColor = nil;
 // Fill preferences
 NSNumber *prefTimerColorStyle = nil;
 NSString *prefTimerCustomColor = nil;
+
+NSNumber *prefTimerTextColorStyle = nil;
+NSString *prefTimerTextCustomColor = nil;
 NSNumber *prefTimerSize = nil;
 NSNumber *prefTimerFontSize = nil;
 NSNumber *prefTimerLineWidth = nil;
+NSNumber *prefTimerYOffset = nil;
+NSNumber *prefTimerXOffset = nil;
 
 @interface UIView (Private)
 - (id)_viewControllerForAncestor;
