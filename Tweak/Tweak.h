@@ -13,6 +13,7 @@ BOOL isEnabled = NO;
 NSNumber *prefDismissStyle = nil;
 
 // Delay
+NSNumber *prefPreventActionTime = nil;
 NSNumber *prefDismissDelay = nil;
 
 // Fill preferences
@@ -43,6 +44,7 @@ NSNumber *prefTimerXOffset = nil;
 @end
 
 @interface SBNotificationBannerDestination : NSObject
+@property(nonatomic) BOOL canExecuteAction;
 -(id)_startTimerWithDelay:(unsigned long long)arg1 eventHandler:(id)arg2;
 @end
 

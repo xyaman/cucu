@@ -133,8 +133,31 @@ static void fakeBanner() {
 
 // Change notification banner dismiss delay
 %hook SBNotificationBannerDestination
+%property (nonatomic) BOOL canExecuteAction;
 - (id) _startTimerWithDelay:(unsigned long long)arg1 eventHandler:(id)arg2 {
     return %orig([prefDismissDelay intValue], arg2);
+}
+
+// Every time a banner will appear, we set execute action to false
+-(void)presentableWillAppearAsBanner:(id)arg0 {
+    %orig;
+
+    // We only initialize timer if there if prevent action time, this way we reduce memory usage
+
+    if([prefPreventActionTime floatValue] == 0) {
+        self.canExecuteAction = YES;
+    
+    } else {
+        self.canExecuteAction = NO;
+        [NSTimer scheduledTimerWithTimeInterval:[prefPreventActionTime floatValue] repeats:NO block:^(NSTimer *timer) {
+            self.canExecuteAction = YES;
+        }];
+    }
+}
+
+// Tap or click
+- (void) notificationViewController:(id)arg0 executeAction:(id)arg1 withParameters:(id)arg2 completion:(id)arg3 {
+    if(self.canExecuteAction) %orig;
 }
 %end
 
@@ -274,6 +297,8 @@ static void fakeBanner() {
     if(!isEnabled) return;
 
     // Dismiss
+    [preferences registerObject:&prefPreventActionTime default:@(0) forKey:@"preventActionTime"];
+
     [preferences registerObject:&prefDismissDelay default:@(6) forKey:@"dismissDelay"];
     [preferences registerObject:&prefDismissStyle default:@(0) forKey:@"dismissStyle"];
 
