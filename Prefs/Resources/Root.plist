@@ -47,7 +47,7 @@
                 <key>label</key>
                 <string>Disable tap action for X seconds</string>
                 <key>footerText</key>
-                <string>Is recommended to choose a value less than dismiss</string>
+                <string>Mainly to avoid accidentally touches.</string>
             </dict>
             <dict>
                 <key>cell</key>
