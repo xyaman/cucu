@@ -161,13 +161,15 @@
                 <key>label</key>
                 <string>Xyaman</string>
                 <key>user</key>
-                <string>xyamanDEV</string>
+                <string>xyaman_</string>
             </dict>
             <dict>
                 <key>cellClass</key>
                 <string>HBLinkTableCell</string>
                 <key>label</key>
-                <string>Donate me ☕️</string>
+                <string>Donate me️</string>
+                <key>subtitle</key>
+                <string>Support my work.</string>
                 <key>url</key>
                 <string>https://paypal.me/xyamandev</string>
             </dict>
@@ -175,7 +177,9 @@
                 <key>cellClass</key>
                 <string>HBLinkTableCell</string>
                 <key>label</key>
-                <string>Source Code ⚙️</string>
+                <string>Source Code</string>
+                <key>subtitle</key>
+                <string>Github</string>
                 <key>url</key>
                 <string>https://github.com/xyaman/cucu</string>
             </dict>
