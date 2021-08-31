@@ -93,6 +93,8 @@ static void fakeBanner() {
     [super layoutSubviews];
 
     if(self.frame.origin.y > 0 && !self.shapeLayer) {
+
+        // TODO: change this
         self.countLabel.bounds = self.bounds;
 
         // Shape layer
@@ -134,6 +136,7 @@ static void fakeBanner() {
 // Change notification banner dismiss delay
 %hook SBNotificationBannerDestination
 %property (nonatomic) BOOL canExecuteAction;
+// Change dismiss delay (default is 6)
 - (id) _startTimerWithDelay:(unsigned long long)arg1 eventHandler:(id)arg2 {
     return %orig([prefDismissDelay intValue], arg2);
 }
@@ -143,7 +146,6 @@ static void fakeBanner() {
     %orig;
 
     // We only initialize timer if there if prevent action time, this way we reduce memory usage
-
     if([prefPreventActionTime floatValue] == 0) {
         self.canExecuteAction = YES;
     
