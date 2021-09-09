@@ -3,6 +3,8 @@
 #define RESPONDS_TO(item) [self respondsToSelector:@selector(item)]
 #define ANCESTOR_RESPONDS_TO(item) [[self _viewControllerForAncestor] respondsToSelector:@selector(item)]
 
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 /*----------------------
  / Banner notification
  -----------------------*/
@@ -159,7 +161,7 @@ static void fakeBanner() {
 
 // Tap or click
 - (void) notificationViewController:(id)arg0 executeAction:(id)arg1 withParameters:(id)arg2 completion:(id)arg3 {
-    if(self.canExecuteAction) %orig;
+    if(self.canExecuteAction || SYSTEM_VERSION_LESS_THAN(@"14.0")) %orig;
 }
 %end
 

@@ -47,7 +47,7 @@
                 <key>label</key>
                 <string>Disable tap action for X seconds</string>
                 <key>footerText</key>
-                <string>Mainly to avoid accidentally touches.</string>
+                <string>Mainly to avoid accidentally touches. This does not have effect on iOS 13.</string>
             </dict>
             <dict>
                 <key>cell</key>
